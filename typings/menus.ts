@@ -1,0 +1,60 @@
+export interface MenuObject {
+	count: Number
+	description: string
+	filter: string
+	items: Array<MenuItem>
+	name: string
+	parent: Number
+	slug: string
+	taxonomy: string
+	term_group: Number
+	term_id: Number
+	term_taxonomy_id: Number
+}
+
+export interface MenuItem {
+	ID: Number
+	attr_title: string
+	avatar_size: string
+	can_see: string
+	child_items: Array<MenuItem>
+	classes: Array<string>
+	comment_count: string
+	comment_status: string
+	db_id: Number
+	description: string
+	filter: string
+	guid: string
+	menu_item_parent: string
+	menu_order: Number
+	object: string
+	object_id: string
+	ping_status: string
+	pinged: string
+	post_author: string
+	post_content: string
+	post_content_filtered: string
+	post_date: string
+	post_date_gmt: string
+	post_excerpt: string
+	post_mime_type: string
+	post_modified: string
+	post_modified_gmt: string
+	post_name: string
+	post_parent: Number
+	post_password: string
+	post_status: string
+	post_title: string
+	post_type: string
+	redirect_type: string
+	redirect_url: string
+	roles: Array<any>
+	target: string
+	title: string
+	to_ping: string
+	type: string
+	type_label: string
+	url: string
+	which_users: string
+	xfn: string
+}

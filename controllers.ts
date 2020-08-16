@@ -1,4 +1,4 @@
-import wp, { Namespace as WPNS } from './controllers/wp'
+import wp, { Namespace as WPNS } from './controllers/wp/wpv2'
 import menus, { Namespace as MenusNS } from './controllers/menus'
 import jwtAuth, { Namespace as jwtAuthNS } from './controllers/jwt-auth'
 
