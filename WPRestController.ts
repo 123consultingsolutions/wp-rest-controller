@@ -2,7 +2,7 @@ import axios from 'axios'
 import controllers, { RouteControllers } from './controllers'
 
 import type { AxiosInstance, AxiosResponse } from 'axios'
-import { WPUserObject } from './typings/wp'
+import type { WPUserObject } from './typings/wp'
 
 interface WPJsonResponse {
 	authentication: Array<any>

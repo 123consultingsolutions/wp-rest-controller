@@ -36,9 +36,9 @@ export class JWTAuth extends WPController {
 
 	getToken = async (user: UserCreds) => {
 		try {
-			let { data } = await this.request.post('/jwt-auth/v1/token', user)
-			if (data.statusCode === 200) return data.data
-			else throw data
+			let res = await this.request.post('/jwt-auth/v1/token', user)
+			if (res.status === 200) return res.data
+			else throw res
 		} catch (error) {
 			throw error
 		}
@@ -47,21 +47,21 @@ export class JWTAuth extends WPController {
 	validate = async (token: TokenPackage | null = null) => {
 		if (token) this.setToken(token)
 		try {
-			let { data }: AxiosResponse = await this.request.post(
-				'/jwt-auth/v1/token/validate'
-			)
-			if (data.statusCode === 200) return token
-			else throw data
+			let res = await this.request.post('/jwt-auth/v1/token/validate')
+			if (res.status === 200) return token
+			else throw res
 		} catch (error) {
 			throw error
 		}
 	}
 
 	save = (tokenPackage: TokenPackage): Boolean => {
+		const wp = this.route.wp.v2
 		if (window.localStorage && typeof tokenPackage === 'object') {
 			this.setToken(tokenPackage)
 			window.localStorage.setItem('sa-user', JSON.stringify(tokenPackage))
 			console.log('user saved')
+			if (wp) wp.users.me()
 			return true
 		} else return false
 	}

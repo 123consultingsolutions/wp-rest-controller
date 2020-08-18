@@ -1,4 +1,4 @@
-import { RouteControllers } from './controllers'
+import type { RouteControllers } from './controllers'
 import type { WPState } from './WPRestController'
 import type { AxiosInstance } from 'axios'
 

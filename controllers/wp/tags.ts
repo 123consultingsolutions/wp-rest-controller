@@ -1,10 +1,10 @@
 import WPController from '@includes/wp-rest-controller/WPController'
-import {
+import type {
 	WPPostsGetParams,
 	WPTagsGetPromise,
 	WPTagObject,
 } from '@includes/wp-rest-controller/typings/wp'
-import { AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
 
 export default class WPTags extends WPController {
 	get = async (params: WPPostsGetParams = null): WPTagsGetPromise => {

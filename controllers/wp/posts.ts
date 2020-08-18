@@ -1,5 +1,5 @@
-import WPController from '../../WPController'
-import {
+import WPController from '@includes/wp-rest-controller/WPController'
+import type {
 	WPPostObject,
 	WPUserObject,
 	WPMediaObject,
@@ -9,8 +9,8 @@ import {
 	WPPostsGetPromise,
 	WPPostsGetResponse,
 } from '@includes/wp-rest-controller/typings/wp'
-import { WPV2 } from './wpv2'
-import { AxiosResponse } from 'axios'
+import type { WPV2 } from './wpv2'
+import type { AxiosResponse } from 'axios'
 
 export default class WPPosts extends WPController {
 	getFull = async (

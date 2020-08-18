@@ -1,6 +1,6 @@
 import WPController from '@includes/wp-rest-controller/WPController'
-import { AxiosResponse } from 'axios'
-import {
+import type { AxiosResponse } from 'axios'
+import type {
 	WPUserObject,
 	WPPostsGetParams,
 	WPUsersGetPromise,
