@@ -57,4 +57,5 @@ export interface MenuItem {
 	url: string
 	which_users: string
 	xfn: string
+	slug: string
 }
