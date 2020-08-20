@@ -4,7 +4,6 @@ import type {
 	WPUserObject,
 	WPPostsGetParams,
 	WPUsersGetPromise,
-	WPUsersGetResponse,
 } from '@includes/wp-rest-controller/typings/wp'
 
 export default class WPUsers extends WPController {
@@ -27,17 +26,16 @@ export default class WPUsers extends WPController {
 		switch (typeof params) {
 			case 'undefined':
 				res = await this.request.get('/wp/v2/users/')
-				break
+				return res.data as WPUserObject
 			case 'object':
 				res = await this.request.get('/wp/v2/users/', {
 					params,
 				})
-				break
+				return res.data as WPUserObject[]
 			case 'string':
 			case 'number':
 				res = await this.request.get('/wp/v2/users/' + params)
-				break
+				return res.data as WPUserObject
 		}
-		return res.data as WPUsersGetResponse
 	}
 }

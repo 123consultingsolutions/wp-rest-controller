@@ -1,4 +1,4 @@
-import { WPMediaObject } from './media'
+import type { WPMediaObject } from './media'
 
 export interface WPUserObject {
 	avatar_urls: { [size: string]: string }
