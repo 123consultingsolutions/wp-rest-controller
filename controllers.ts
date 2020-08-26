@@ -6,6 +6,7 @@ export interface RouteControllers {
 	wp?: WPNS
 	menus?: MenusNS
 	jwtAuth?: jwtAuthNS
+	[id: string]: any
 }
 
 export default [wp, menus, jwtAuth]

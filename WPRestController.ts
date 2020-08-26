@@ -56,13 +56,26 @@ export default class WPRestController {
 		return this
 	}
 
-	setupControllers = (): WPRestController => {
-		controllers.forEach((c) => {
-			let [routeNamespace, routeVersion] = c.namespace.split('.')
-			this.route[routeNamespace] = {
-				[routeVersion]: new c.controller(this),
+	addController = (controller) => {
+		let [routeNamespace, routeVersion] = controller.namespace.split('.')
+		if (this.route[routeNamespace]) {
+			if (this.route[routeNamespace][routeVersion]) {
+				console.error(`${routeNamespace} as already been registered`)
+				return false
 			}
-		})
+		}
+
+		if (!this.route[routeNamespace]) this.route[routeNamespace] = {}
+		this.route[routeNamespace] = {
+			...this.route[routeNamespace],
+			[routeVersion]: new controller.controller(this),
+		}
+
+		return this
+	}
+
+	setupControllers = (): WPRestController => {
+		controllers.forEach(this.addController)
 		return this
 	}
 
