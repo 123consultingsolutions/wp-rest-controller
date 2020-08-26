@@ -1,7 +1,7 @@
 import type { WPMediaObject } from './media'
 
 export interface WPUserObject {
-	avatar_urls: { [size: string]: string }
+	avatar_urls: { [size: string]: string } | string
 	description: string
 	id: 1
 	link: string

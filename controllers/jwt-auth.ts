@@ -1,5 +1,4 @@
 import WPController from '../WPController'
-import type { AxiosResponse } from 'axios'
 
 export interface UserCreds {
 	username: String
@@ -21,6 +20,10 @@ export interface Namespace {
 	v1: JWTAuth
 }
 
+/**
+ *! This Rest Controller is mean to be used with JWT Auth by Useful Team
+ ** https://wordpress.org/plugins/jwt-auth/
+ */
 export class JWTAuth extends WPController {
 	_tokenPkg: TokenPackage
 
@@ -37,7 +40,7 @@ export class JWTAuth extends WPController {
 	getToken = async (user: UserCreds) => {
 		try {
 			let res = await this.request.post('/jwt-auth/v1/token', user)
-			if (res.status === 200) return res.data
+			if (res.status === 200) return res.data.data
 			else throw res
 		} catch (error) {
 			throw error
@@ -67,12 +70,17 @@ export class JWTAuth extends WPController {
 	}
 
 	load = async (): Promise<TokenPackage | Boolean> => {
+		console.log('loading user...')
 		if (window.localStorage) {
 			let d = window.localStorage.getItem('sa-user')
 			if (d) {
 				let tokenPackage: TokenPackage = JSON.parse(d) as TokenPackage
 				await this.validate(tokenPackage)
 					.then(this.save)
+					.then((saved) => {
+						if (!saved) return false
+						return d
+					})
 					.catch((error) => {
 						console.error('invalid token! Clearing local user data!', error)
 						this.clear()
