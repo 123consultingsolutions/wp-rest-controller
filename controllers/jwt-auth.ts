@@ -84,6 +84,7 @@ export class JWTAuth extends WPController {
 					.catch((error) => {
 						console.error('invalid token! Clearing local user data!', error)
 						this.clear()
+						throw error
 					})
 				return true
 			} else return false
