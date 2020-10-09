@@ -61,6 +61,7 @@ export class JWTAuth extends WPController {
 	save = (tokenPackage: TokenPackage): Boolean => {
 		const wp = this.route.wp.v2
 		if (window.localStorage && typeof tokenPackage === 'object') {
+			console.log(tokenPackage)
 			this.setToken(tokenPackage)
 			window.localStorage.setItem('sa-user', JSON.stringify(tokenPackage))
 			console.log('user saved')
