@@ -40,7 +40,8 @@ export class JWTAuth extends WPController {
 	getToken = async (user: UserCreds) => {
 		try {
 			let res = await this.request.post('/jwt-auth/v1/token', user)
-			if (res.status === 200) return res.data.data
+			if (res.status === 200 && res.data.data)
+				return res.data.data as TokenPackage
 			else throw res
 		} catch (error) {
 			throw error
