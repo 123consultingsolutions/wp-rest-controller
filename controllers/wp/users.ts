@@ -16,8 +16,10 @@ export default class WPUsers extends WPController {
 			throw error
 		}
 		let user: WPUserObject = res.data
-		if (user.id && user.name && user.avatar_urls) {
+		if (user.ID && user.username && user.user_email) {
 			this.set({ me: user })
+		} else {
+			console.log(user)
 		}
 	}
 

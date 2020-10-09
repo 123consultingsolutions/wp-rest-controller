@@ -11,9 +11,12 @@ export interface WPUserObject {
 	link: string
 	meta: []
 	name: string
+	username: string
 	slug: string
 	url: string
 	profile_background_image?: WPMediaObject
+	user_email?: string
+	email?: string
 	woocommerce_meta?: {
 		activity_panel_inbox_last_read: string
 		activity_panel_reviews_last_read: string
